@@ -8,7 +8,7 @@ export default {
     },
     iconColor: "#333",
     textColor1: "#333",
-    primary: "#05C29B",
+    primary: "#4d5260",
     primaryLight: "#399746",
     secondary: "99d7a1",
     white: "#fff",
