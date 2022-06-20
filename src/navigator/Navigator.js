@@ -10,6 +10,7 @@ import colors from "../styles/colors"
 import Warehouses from "../Screens/Warehouses/Warehouses"
 import Stocks from "../Screens/Warehouses/Stocks"
 import StockDetail from "../Screens/Warehouses/StockDetail"
+import StockDatas from "../Screens/Warehouses/StockDatas"
 
 import Productions from "../Screens/Productions/Productions"
 import Operators from "../Screens/Operators/Operators"
@@ -36,6 +37,7 @@ const WarehouseStack = () => {
             <Stack.Screen name="Warehouses" component={Warehouses} />
             <Stack.Screen name="Stocks" component={Stocks} />
             <Stack.Screen name="StockDetail" component={StockDetail} />
+            <Stack.Screen name="StockDatas" component={StockDatas} />
         </Stack.Navigator>
     )
 }

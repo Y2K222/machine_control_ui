@@ -87,6 +87,16 @@ const globalStyles = StyleSheet.create({
         flexDirection: "row",
         zIndex: 2,
     },
+    button: {
+        backgroundColor: "#ddd",
+        width: "100%",
+        padding: 5,
+        borderRadius: 20,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+        paddingVertical: 12
+    },
     primaryButtonText: {
         fontSize: 14,
         color: colors.dark,
@@ -231,8 +241,23 @@ const globalStyles = StyleSheet.create({
     },
     seperator: {
         width: "100%",
-        backgroundColor: "#3338",
+        backgroundColor: "#ddd",
         height: 1
+    },
+    actionItem: {
+        width: "25%",
+        flexDirection: "column",
+        alignItems: "center"
+    },
+    half: {
+        width: "50%",
+        height: 50,
+        justifyContent: "center",
+        paddingHorizontal: 10
+    },
+    select: {
+        backgroundColor: colors.cardBackground,
+        borderWidth: 1,
     }
 })
 
