@@ -6,6 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import colors from "../../styles/colors";
 import RadioGroup from "react-native-radio-buttons-group";
 import { Picker } from "@react-native-picker/picker"
+import StockUsedDataTable from "../../components/Stock/StockUsedDataTable";
 
 const StockDatas = props => {
 
@@ -83,6 +84,8 @@ const StockDatas = props => {
                     </TouchableOpacity>
                 </View>
             </View>
+            <View style={globalStyles.smallSpace} />
+            <StockUsedDataTable />
         </View>
     )
 

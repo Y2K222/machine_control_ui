@@ -11,7 +11,7 @@ const globalStyles = StyleSheet.create({
         maxWidth: 1000,
         flexDirection: "column",
         alignSelf: "center",
-        paddingHorizontal: 5,
+        paddingHorizontal: 15,
     },
     containerRow: {
         width: "100%",
@@ -48,7 +48,7 @@ const globalStyles = StyleSheet.create({
         color: colors.dark,
         lineHeight: 20,
         letterSpacing: 0.4,
-        marginVertical: 2
+        marginVertical: 2,
     },
     smallText: {
         fontSize: 10,
@@ -57,21 +57,21 @@ const globalStyles = StyleSheet.create({
         letterSpacing: 0.5,
     },
     authInput: {
-        width: 260,
-        height: 50,
+        width: "100%",
+        height: 60,
         borderWidth: 1,
-        borderColor: colors.grey,
+        borderColor: colors.grey + "66",
         paddingHorizontal: 20,
         paddingVertical: 10,
-        borderRadius: 20,
-        fontSize: 14,
+        borderRadius: 5,
+        fontSize: 16,
         backgroundColor: "#fff",
     },
     primaryButton: {
-        backgroundColor: colors.primary,
-        width: 260,
-        height: 50,
-        borderRadius: 20,
+        backgroundColor: colors.grey + "77",
+        width: "100%",
+        height: 60,
+        borderRadius: 5,
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "row",
@@ -100,7 +100,7 @@ const globalStyles = StyleSheet.create({
     primaryButtonText: {
         fontSize: 14,
         color: colors.dark,
-        fontWeight: "700",
+        fontWeight: "600",
     },
     warningButtonText: {
         fontSize: 14,
@@ -180,8 +180,8 @@ const globalStyles = StyleSheet.create({
         zIndex: 2,
     },
     card: {
-        width: 500,
-        maxWidth: "90%",
+        width: "100%",
+        alignSelf: "center",
         flexDirection: "column",
         // elevation: 1,
         backgroundColor: colors.cardBackground,
@@ -189,7 +189,7 @@ const globalStyles = StyleSheet.create({
         // shadowOffset: { width: 1, height: 2 },
         // shadowOpacity: 0.37,
         // shadowRadius: 7.49,
-        borderRadius: 10,
+        borderRadius: 5,
         borderWidth: 1,
         borderColor: colors.borderColor,
         marginVertical: 20,
@@ -200,7 +200,7 @@ const globalStyles = StyleSheet.create({
     itemCard: {
         width: 170, backgroundColor: colors.cardBackground, marginVertical: 10, padding: 10, borderWidth: 1,
         borderColor: colors.borderColor,
-        borderRadius: 10
+        borderRadius: 5
     },
     connectionLightOn: {
         width: 60,
@@ -252,6 +252,12 @@ const globalStyles = StyleSheet.create({
     half: {
         width: "50%",
         height: 50,
+        justifyContent: "center",
+        paddingHorizontal: 10
+    },
+    halfNoHeight: {
+        width: "50%",
+        marginVertical: 5,
         justifyContent: "center",
         paddingHorizontal: 10
     },

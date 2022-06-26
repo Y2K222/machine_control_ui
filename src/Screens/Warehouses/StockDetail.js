@@ -48,26 +48,26 @@ const ItemActionBar = props => {
                 message={dialogMessage}
                 hintInput={hintInput}
                 textInputProps={{ keyboardType: "number-pad" }}
-                submitInput={(count)=> handleStockCountSubmit(count)}
+                submitInput={(count) => handleStockCountSubmit(count)}
                 closeDialog={() => { setIsDialogVisible(false) }}>
             </DialogInput>
             <View style={globalStyles.rowCenter}>
-                <TouchableOpacity style={globalStyles.actionItem} onPress={()=> handlePressStock("in")} >
+                <TouchableOpacity style={globalStyles.actionItem} onPress={() => handlePressStock("in")} >
                     <Ionicons name="enter-outline" size={40} color={colors.primary} />
                     <Text style={globalStyles.normalText}>Stock In</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={globalStyles.actionItem} onPress={()=> handlePressStock("out")}>
+                <TouchableOpacity style={globalStyles.actionItem} onPress={() => handlePressStock("out")}>
                     <Ionicons name="exit-outline" size={40} color={colors.primary} />
                     <Text style={globalStyles.normalText}>Stock Out</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={globalStyles.actionItem} onPress={()=> navigation.navigate("StockDatas")} >
+                <TouchableOpacity style={globalStyles.actionItem} onPress={() => navigation.navigate("StockDatas")} >
                     <Ionicons name="analytics-outline" size={40} color={colors.primary} />
                     <Text style={globalStyles.normalText}>Details</Text>
                 </TouchableOpacity>
-                <View style={globalStyles.actionItem}>
+                <TouchableOpacity style={globalStyles.actionItem} onPress={() => navigation.navigate("StockEdit")}>
                     <Ionicons name="settings-outline" size={40} color={colors.primary} />
                     <Text style={globalStyles.normalText}>Edit</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </>
     )
@@ -81,13 +81,34 @@ const StockDetail = props => {
         <View style={globalStyles.fullScreen}>
             <Appbar title="ItemDetail" back={true} />
             <ScrollView>
-                <View style={globalStyles.card}>
+                <View style={globalStyles.container}>
+                    <View style={globalStyles.mediumSpace} />
                     <Image style={{ width: "100%", height: 200, resizeMode: "cover" }} source={{ uri: "https://external-preview.redd.it/ZWx5UgslhG3V2QQx8mWD9ArsdVnHqTOX6b4vEvNY4l8.jpg?auto=webp&s=300f495bb7544299c6001e6000a047efbb1b264c" }} />
                     <View style={globalStyles.smallSpace} />
-                    <Text style={globalStyles.header}>အင်ဂျင်</Text>
-                    <View style={globalStyles.smallSpace} />
-                    <Text style={globalStyles.normalText}>Total Instock: 200 လုံး</Text>
-                    <Text style={globalStyles.normalText}>Show Alert At: 10 လုံး</Text>
+                    <View style={globalStyles.rowLeft}>
+                        <View style={globalStyles.halfNoHeight}>
+                            <Text style={globalStyles.normalText}>Stock Item Name</Text>
+                        </View>
+                        <View style={globalStyles.halfNoHeight}>
+                            <Text style={globalStyles.title}>: Stock Item Name</Text>
+                        </View>
+                    </View>
+                    <View style={globalStyles.rowLeft}>
+                        <View style={globalStyles.halfNoHeight}>
+                            <Text style={globalStyles.normalText}>Total Instock</Text>
+                        </View>
+                        <View style={globalStyles.halfNoHeight}>
+                            <Text style={globalStyles.normalText}>: 200 လုံး</Text>
+                        </View>
+                    </View>
+                    <View style={globalStyles.rowLeft}>
+                        <View style={globalStyles.halfNoHeight}>
+                            <Text style={globalStyles.normalText}>Show Alert At</Text>
+                        </View>
+                        <View style={globalStyles.halfNoHeight}>
+                            <Text style={globalStyles.normalText}>: 10 လုံး</Text>
+                        </View>
+                    </View>
                     <View style={globalStyles.smallSpace} />
                     <View style={globalStyles.seperator} />
                     <View style={globalStyles.smallSpace} />
