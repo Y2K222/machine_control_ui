@@ -8,11 +8,15 @@ import colors from "../styles/colors"
 
 // Screens
 import Warehouses from "../Screens/Warehouses/Warehouses"
+import AddNewWarehouse from "../Screens/Warehouses/AddNewWarehouse"
 import Stocks from "../Screens/Warehouses/Stocks"
 import StockDetail from "../Screens/Warehouses/StockDetail"
 import StockDatas from "../Screens/Warehouses/StockDatas"
+import StockEdit from "../Screens/Warehouses/StockEditScreen"
 
 import Productions from "../Screens/Productions/Productions"
+import ProductionDetail from "../Screens/Productions/ProductionDetail"
+
 import Operators from "../Screens/Operators/Operators"
 import Finaloutputs from "../Screens/Finaloutputs/Finaloutputs"
 import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes"
@@ -35,9 +39,11 @@ const WarehouseStack = () => {
             screenOptions={stackNavigatorOptions}
         >
             <Stack.Screen name="Warehouses" component={Warehouses} />
+            <Stack.Screen name="AddNewWarehouse" component={AddNewWarehouse} />
             <Stack.Screen name="Stocks" component={Stocks} />
             <Stack.Screen name="StockDetail" component={StockDetail} />
             <Stack.Screen name="StockDatas" component={StockDatas} />
+            <Stack.Screen name="StockEdit" component={StockEdit} />
         </Stack.Navigator>
     )
 }
@@ -49,6 +55,7 @@ const ProductionStack = () => {
             screenOptions={stackNavigatorOptions}
         >
             <Stack.Screen name="Productions" component={Productions} />
+            <Stack.Screen name="ProductionDetail" component={ProductionDetail} />
         </Stack.Navigator>
     )
 }
