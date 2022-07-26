@@ -40,7 +40,7 @@ export default {
 
     getStock:async function(id,token){
         try {
-            let response = await GET(`/${root}/get-stocks/${id}`,token)
+            let response = await GET(`/${root}/get-stock/${id}`,token)
             return response            
         } catch (error) {
             throw new Error(error)

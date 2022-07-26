@@ -31,7 +31,7 @@ export default {
 
     getCbProduction:async function(){
         try {
-            let response = await POST(`/${root}/get-cbproductions`,token)
+            let response = await PUT(`/${root}/get-cbproductions`,token)
             return response
         } catch (error) {
             throw new Error(error)

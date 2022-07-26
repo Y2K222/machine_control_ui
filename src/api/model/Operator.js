@@ -20,7 +20,7 @@ const root = "operator"
         }
     },
     
-     deleteInfo: async function(id,token){
+     delete: async function(id,token){
         try {
             let response = await DELETE(`/${root}/${id}`,token)
             return response
