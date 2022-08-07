@@ -47,7 +47,7 @@ const root = "leader"
         }
     },
 
-    chageRaw : async function(id,token){
+    changeRaw : async function(id,token){
         try {
             let response = await PUT(`/${root}/get-raw/${id}`,token)
             return response
