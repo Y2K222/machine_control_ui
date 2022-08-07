@@ -29,7 +29,7 @@ const RawCard = props => {
             </TouchableOpacity>
         </View>
     )
-
+ 
 }
 
 export default RawCard

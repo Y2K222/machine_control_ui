@@ -10,7 +10,7 @@ export const GET = function (path, token = false) {
             headers: headers
         }
 
-        fetch(`${config.protocol}${config.host}${path}`, options)
+        fetch(`${config.host}${path}`, options)
             .then((response) => {
                 if (response.status !== 200) reject();
                 else return response.json();
@@ -35,7 +35,7 @@ export const POST = function (path, body, token = false) {
             body: JSON.stringify(body)
         }
 
-        fetch(`${config.protocol}${config.host}${path}`, options)
+        fetch(`${config.host}${path}`, options)
             .then((response) => {
                 if (response.status != 200) reject(response.status);
                 else return response.json();
@@ -59,7 +59,7 @@ export const UPLOAD_PHOTO = function (path, photo, token = false) {
             headers: headers,
             body: formData
         }
-        fetch(`${config.protocol}${config.host}${path}`, options)
+        fetch(`${config.host}${path}`, options)
             .then((response) => {
                 if (response.status != 200) reject(response.status);
                 else return response.json();
@@ -79,7 +79,7 @@ export const DELETE_PHOTO = function(path,photo,token=false){
             method:"GET",
             headers:headers,
         }
-        fetch(`${config.protocol}${config.host}/${path}/${photo}`,options)
+        fetch(`${config.host}/${path}/${photo}`,options)
         .then((response)=>{
             if(response.status != 200) reject(response.status);
             else return response.json()
@@ -104,7 +104,7 @@ export const PUT = function (path, body, token = false) {
             body: JSON.stringify(body)
         }
 
-        fetch(`${config.protocol}${config.host}${path}`, options)
+        fetch(`${config.host}${path}`, options)
             .then((response) => {
                 if (response.status != 200) reject(response.status);
                 else return response.json();
@@ -125,7 +125,7 @@ export const DELETE = function (path, token = false) {
             headers: headers
         }
 
-        fetch(`${config.protocol}${config.host}${path}`, options)
+        fetch(`${config.host}${path}`, options)
             .then((response) => {
                 if (response.status != 200) reject(response.status);
                 else return response.json();
@@ -146,7 +146,7 @@ export const PATCH = function (path, token = false) {
             headers: headers
         }
 
-        fetch(`${config.protocol}${config.host}${path}`, options)
+        fetch(`${config.host}${path}`, options)
             .then((response) => {
                 if (response.status != 200) reject(response.status);
                 else return response.json();

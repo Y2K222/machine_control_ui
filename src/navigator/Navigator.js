@@ -8,14 +8,20 @@ import colors from "../styles/colors"
 
 // Screens
 import Warehouses from "../Screens/Warehouses/Warehouses"
+import WarehouseDetail from "../Screens/Warehouses/WarehouseDetail"
+import InsertStock from "../Screens/Warehouses/InsertStock"
 import AddNewWarehouse from "../Screens/Warehouses/AddNewWarehouse"
+import EditStockItem from "../Screens/Warehouses/EditStockItem"
+import EditWarehouse from "../Screens/Warehouses/EditWarehouse"
 import Stocks from "../Screens/Warehouses/Stocks"
 import StockDetail from "../Screens/Warehouses/StockDetail"
 import StockDatas from "../Screens/Warehouses/StockDatas"
 import StockEdit from "../Screens/Warehouses/StockEditScreen"
+import StockRecord from "../Screens/Warehouses/StockRecord"
 
 import Productions from "../Screens/Productions/Productions"
 import ProductionDetail from "../Screens/Productions/ProductionDetail"
+import AddNewProduction from "../Screens/Productions/AddNewProduction"
 
 import Operators from "../Screens/Operators/Operators"
 import Finaloutputs from "../Screens/Finaloutputs/Finaloutputs"
@@ -40,10 +46,14 @@ const WarehouseStack = () => {
         >
             <Stack.Screen name="Warehouses" component={Warehouses} />
             <Stack.Screen name="AddNewWarehouse" component={AddNewWarehouse} />
+            <Stack.Screen name="EditWarehouse" component={EditWarehouse} />
+            <Stack.Screen name="WarehouseDetail" component={WarehouseDetail} />
+            <Stack.Screen name="EditStockItem" component={EditStockItem} />
+            <Stack.Screen name="InsertStock" component={InsertStock} />
             <Stack.Screen name="Stocks" component={Stocks} />
             <Stack.Screen name="StockDetail" component={StockDetail} />
-            <Stack.Screen name="StockDatas" component={StockDatas} />
             <Stack.Screen name="StockEdit" component={StockEdit} />
+            <Stack.Screen name="StockRecord" component={StockRecord} />
         </Stack.Navigator>
     )
 }
@@ -56,6 +66,7 @@ const ProductionStack = () => {
         >
             <Stack.Screen name="Productions" component={Productions} />
             <Stack.Screen name="ProductionDetail" component={ProductionDetail} />
+            <Stack.Screen name="AddNewProduction" component={AddNewProduction} />
         </Stack.Navigator>
     )
 }

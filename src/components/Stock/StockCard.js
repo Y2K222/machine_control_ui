@@ -4,26 +4,28 @@ import globalStyles from "../../styles"
 import Ionicons from "react-native-vector-icons/Ionicons";
 import colors from "../../styles/colors"
 import { useNavigation } from "@react-navigation/native";
+import config from "../../config";
 
 const StockCard = props => {
 
     const navigation = useNavigation()
 
     return (
-        <TouchableOpacity style={globalStyles.itemCard} onPress={() => navigation.navigate("StockDetail")}>
-            <Image style={{ width: "100%", height: 120 }} source={{ uri: "https://external-preview.redd.it/ZWx5UgslhG3V2QQx8mWD9ArsdVnHqTOX6b4vEvNY4l8.jpg?auto=webp&s=300f495bb7544299c6001e6000a047efbb1b264c" }} />
-            <View style={globalStyles.smallSpace} />
-            <Text style={globalStyles.title}>{props.name}</Text>
-            <Text style={globalStyles.normalText}> {props.totalInstock} {props.unit}</Text>
-            {
-                props.showAlertAt < props.totalInstock && (
-                    <View style={globalStyles.rowLeft}>
-                        <Ionicons name="alert-circle" size={20} color={colors.warning} />
-                        <Text style={globalStyles.normalText}>Low Stock</Text>
-                    </View>
-                )
-            }
-        </TouchableOpacity>
+        <View style={globalStyles.itemCardWarpper}>
+            <TouchableOpacity style={globalStyles.itemCard} onPress={() => navigation.navigate("StockDetail", { stockId: props.stockId })}>
+                <Image style={{ width: "100%", height: 120, borderWidth: 1, borderColor: "#ddd" }} source={{ uri: props.photo ? config.staticHost + props.photo : config.staticHost + "/system/placeholder.png" }} />
+                <View style={globalStyles.smallSpace} />
+                <Text style={globalStyles.title}>{props.name}</Text>
+                <View style={globalStyles.rowLeft}>
+                    {
+                        props.showAlertAt > props.totalInstock && (
+                            <Ionicons name="alert-circle-outline" color={colors.warning} size={20} />
+                        )
+                    }
+                    <Text style={globalStyles.normalText}> {props.totalInstock} {props.unit}</Text>
+                </View>
+            </TouchableOpacity>
+        </View>
     )
 }
 

@@ -1,15 +1,35 @@
-import React from "react"
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native"
+import React, { useEffect, useState } from "react"
+import { View, Text, Image, TouchableOpacity, ScrollView, ToastAndroid, ActivityIndicator } from "react-native"
 import globalStyles from "../../styles"
-import { useNavigation } from "@react-navigation/native"
+import { useIsFocused, useNavigation } from "@react-navigation/native"
 import Appbar from "../../components/Util/Appbar"
 import Ionicons from "react-native-vector-icons/Ionicons";
 import colors from "../../styles/colors"
+import CbProduction from "../../api/model/CbProduction"
 import RawCard from "../../components/Production/RawCard"
+import config from "../../config"
+import Warehouse from "../../api/model/Warehouse"
 
 const ProductionDetail = props => {
 
     const navigation = useNavigation()
+    const isFocused = useIsFocused()
+    const productionId = props.route.params.productionId
+    const [loading, setLoading] = useState(true)
+    const [stockLoading, setStockLoading] = useState(true)
+    const [stockLoaded, setStockLoaded] = useState(false)
+    const [production, setProduction] = useState(null)
+    const [stockItems, setStockItems] = useState([])
+
+    const loadStock = async () => {
+        try {
+            let result = await Warehouse.getInfo(productionId)
+            setProduction(result)
+        } catch (error) {
+            ToastAndroid.show("ဒေတာမရနိုင်သေးပါ", ToastAndroid.SHORT)
+        }
+    }
+
 
     return (
         <View style={globalStyles.fullScreen}>

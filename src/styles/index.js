@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native"
+import { color } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes"
 import colors from "./colors"
 
 const globalStyles = StyleSheet.create({
@@ -18,7 +19,7 @@ const globalStyles = StyleSheet.create({
         maxWidth: 1000,
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "space-evenly"
+        justifyContent: "flex-start"
     },
     title: {
         fontSize: 14,
@@ -32,7 +33,7 @@ const globalStyles = StyleSheet.create({
     },
     perfectCenter: {
         flex: 1,
-        backgroundColor: colors.white,
+        backgroundColor: colors.backgroundColor,
         alignItems: "center",
         justifyContent: "center",
     },
@@ -155,7 +156,7 @@ const globalStyles = StyleSheet.create({
     header: {
         color: colors.dark,
         fontWeight: "bold",
-        fontSize: 18,
+        fontSize: 16,
         letterSpacing: 1
     },
     buttonIcon: {
@@ -165,13 +166,13 @@ const globalStyles = StyleSheet.create({
     topToolsbar: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingHorizontal: 30,
-        marginTop: 40,
+        paddingTop: 35,
+        paddingBottom: 20,
+        paddingHorizontal: 20,
         zIndex: 2,
         alignItems: "center",
-        paddingBottom: 40,
         borderBottomWidth: 1,
-        borderBottomColor: colors.borderColor
+        borderBottomColor: colors.borderColor,
     },
     topToolsbarNoPadding: {
         flexDirection: "row",
@@ -197,10 +198,18 @@ const globalStyles = StyleSheet.create({
         marginHorizontal: 20,
         overflow: "hidden"
     },
+    itemCardWarpper: {
+        width: "50%",
+        paddingHorizontal: 3
+    },
     itemCard: {
-        width: 170, backgroundColor: colors.cardBackground, marginVertical: 10, padding: 10, borderWidth: 1,
+        width: "100%",
+        backgroundColor: colors.cardBackground,
+        marginVertical: 10,
+        padding: 10,
+        borderWidth: 1,
         borderColor: colors.borderColor,
-        borderRadius: 5
+        borderRadius: 5,
     },
     connectionLightOn: {
         width: 60,
@@ -245,13 +254,11 @@ const globalStyles = StyleSheet.create({
         height: 1
     },
     actionItem: {
-        width: "25%",
         flexDirection: "column",
         alignItems: "center"
     },
     half: {
         width: "50%",
-        height: 50,
         justifyContent: "center",
         paddingHorizontal: 10
     },
@@ -264,6 +271,36 @@ const globalStyles = StyleSheet.create({
     select: {
         backgroundColor: colors.cardBackground,
         borderWidth: 1,
+    },
+    item: {
+        backgroundColor: colors.white,
+        paddingVertical: 20,
+        paddingHorizontal: 10,
+        marginVertical: 1
+    },
+    itemTextIn: {
+        fontSize: 13,
+        fontWeight: "700",
+        color: colors.green,
+        lineHeight: 20,
+        letterSpacing: 0.4,
+        marginVertical: 2,
+    },
+    itemTextOut: {
+        fontSize: 13,
+        fontWeight: "700",
+        color: colors.warning,
+        lineHeight: 20,
+        letterSpacing: 0.4,
+        marginVertical: 2,
+    },
+    itemTextUse: {
+        fontSize: 13,
+        fontWeight: "700",
+        color: colors.primary,
+        lineHeight: 20,
+        letterSpacing: 0.4,
+        marginVertical: 2,
     }
 })
 

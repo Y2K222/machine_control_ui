@@ -1,24 +1,24 @@
-import { useNavigation, useTheme } from "@react-navigation/native"
-import React, { useState } from "react"
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, TextInput, Image, ToastAndroid, ActivityIndicator } from "react-native"
-import globalStyles from "../../styles"
+import globalStyles from "../../styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import colors from "../../styles/colors"
+import colors from "../../styles/colors";
 import Appbar from "../../components/Util/Appbar"
-import System from "../../api/model/System"
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import config from "../../config";
 import mime from "mime"
 import * as ImagePicker from "expo-image-picker"
+import { useNavigation } from "@react-navigation/native";
+import Warehouse from "../../api/model/Warehouse";
 
-const AddNewWarehouse = props => {
+const EditWarehouse = props => {
 
     const navigation = useNavigation()
-    const [photo, setPhoto] = useState(null)
+    const [photo, setPhoto] = useState(props.route.params.photo)
     const [uploading, setUploading] = useState(false)
-    const [name, setName] = useState("")
-    const [location, setLocation] = useState("")
-    const [note, setNote] = useState("")
+    const [name, setName] = useState(props.route.params.name)
+    const [location, setLocation] = useState(props.route.params.location)
+    const [note, setNote] = useState(props.route.params.note)
     const [loading, setLoading] = useState(false)
 
     const getFileOnMobile = function (pickedImage) {
@@ -75,34 +75,32 @@ const AddNewWarehouse = props => {
         uploadFile(file)
     }
 
-    const handleAddNewWarehouse = async () => {
+    const handleEditWarehouse = async () => {
         setLoading(true)
-        // Warehouse object
         let warehouse = {
-            photo: photo || false,
+            photo,
             name,
             location,
             note
         }
-
         try {
-            await System.createWarehouse(warehouse)
+            await Warehouse.updateInfo(props.route.params._id, warehouse)
             navigation.goBack()
         } catch (error) {
-            console.log(error)
-            ToastAndroid.show("Unable to create a new warehouse", ToastAndroid.SHORT)
+            console.log(error);
+            ToastAndroid.show("ပြင်ဆင်၍ မရနိုင်ပါ", ToastAndroid.SHORT)
         }
         setLoading(false)
     }
 
     return (
         <View style={globalStyles.fullScreen}>
-            <Appbar title="Add New Warehouse" back={true} />
+            <Appbar title="အချက်အလက် ပြင်ဆင်ရန်" back={true} />
             <KeyboardAwareScrollView>
                 <View style={globalStyles.smallSpace} />
                 <View style={globalStyles.container}>
                     {/* Warehouse photo */}
-                    <Text style={globalStyles.normalText}>Warehouse Photo</Text>
+                    <Text style={globalStyles.normalText}>ဓာတ်ပုံ</Text>
                     <Image style={{ width: "100%", height: 300, resizeMode: "cover", borderWidth: 1, borderColor: colors.grey }} source={{ uri: photo ? config.staticHost + photo : config.staticHost + "/system/placeholder.png" }} />
                     <View style={globalStyles.smallSpace} />
                     <TouchableOpacity style={globalStyles.primaryButton} onPress={handlePickImage}>
@@ -111,7 +109,7 @@ const AddNewWarehouse = props => {
                                 <ActivityIndicator size={20} color={colors.dark} />
                             ) : (
                                 <>
-                                    <Text style={globalStyles.primaryButtonText}>Upload Photo</Text>
+                                    <Text style={globalStyles.primaryButtonText}>ပုံတင်ရန်</Text>
                                     <View style={globalStyles.smallSpaceRow} />
                                     <Ionicons name="cloud-upload-outline" size={30} color={colors.dark} />
                                 </>
@@ -120,7 +118,7 @@ const AddNewWarehouse = props => {
                     </TouchableOpacity>
                     {/* / Warehouse photo */}
                     <View style={globalStyles.smallSpace} />
-                    <Text style={globalStyles.normalText}>Warehouse Name</Text>
+                    <Text style={globalStyles.normalText}>ဂိုထောင်အမည်</Text>
                     <TextInput
                         style={globalStyles.authInput}
                         placeholder="Enter warehouse name"
@@ -128,7 +126,7 @@ const AddNewWarehouse = props => {
                         value={name}
                     />
                     <View style={globalStyles.smallSpace} />
-                    <Text style={globalStyles.normalText}>Warehouse Location</Text>
+                    <Text style={globalStyles.normalText}>ဂိုထောင်လိပ်စာ</Text>
                     <TextInput
                         style={globalStyles.authInput}
                         placeholder="Enter warehouse location"
@@ -136,7 +134,7 @@ const AddNewWarehouse = props => {
                         value={location}
                     />
                     <View style={globalStyles.smallSpace} />
-                    <Text style={globalStyles.normalText}>Notes</Text>
+                    <Text style={globalStyles.normalText}>မှတ်ချက်</Text>
                     <TextInput
                         multiline
                         style={{ ...globalStyles.authInput, height: 200, textAlignVertical: 'top' }}
@@ -146,15 +144,15 @@ const AddNewWarehouse = props => {
                         numberOfLines={10}
                     />
                     <View style={globalStyles.mediumSpace} />
-                    <TouchableOpacity style={globalStyles.primaryButton} onPress={handleAddNewWarehouse}>
+                    <TouchableOpacity style={globalStyles.primaryButton} onPress={handleEditWarehouse}>
                         {
                             loading ? (
                                 <ActivityIndicator size={20} color={colors.dark} />
                             ) : (
                                 <>
-                                    <Text style={globalStyles.primaryButtonText}>Add New Warehouse</Text>
+                                    <Text style={globalStyles.primaryButtonText}>ပြင်ဆင်မည်</Text>
                                     <View style={globalStyles.smallSpaceRow} />
-                                    <Ionicons name="add-outline" size={30} color={colors.dark} />
+                                    <Ionicons name="save-outline" size={30} color={colors.dark} />
                                 </>
                             )
                         }
@@ -164,7 +162,6 @@ const AddNewWarehouse = props => {
             </KeyboardAwareScrollView>
         </View>
     )
-
 }
 
-export default AddNewWarehouse
+export default EditWarehouse
